@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="checkMan">
+  <head>
+    <title>Localytics - Culture Survey</title>
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,700" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <script src="js/vendor.js"></script>
+    <script src="js/main.js"></script>
+  </head>
+
+  <body ng-controller="ItemController">
+
+    <div class="new-item">
+      <form ng-submit="addItem()">
+        <label><span><img src="localytics-logomark.png" height="30" width="30">
+        What do we value as a company?&nbsp;&nbsp;</span>
+
+          <input type="text" name="itemName" ng-model="newItem.name" style="width: 30%;" maxlength="200" autofocus>
+          <input type="button" name="itemNew" ng-click="addItem()" value="+ ADD" class="btn" ng-disabled="!newItem.name">
+
+        </label>
+      </form>
+    </div>
+
+    <div class="item"
+      ng-repeat="item in filteredItems = (items | object2Array | orderBy:'score':true )">
+      <div class="buttons">
+        <span ng-switch="votable(item)">
+          <a class="action btn" href="" ng-switch-when="true" ng-click="vote(item)" title="Agree"><i class="fa fa-plus"></i></a>
+          <a class="action btn success" href="" ng-switch-when="false" ng-click="unvote(item)" title="You agree! Click to undo."><i class="fa fa-check"></i></a>
+        </span>
+      </div>
+      <a class="action btn delete" href="" ng-click="delete(item)" ng-show="deletable(item)"><i class="fa fa-times"></i></a>
+
+      <div class="score">{{item.score}}</div>
+      <div class="name">{{item.name}}</div>
+    </div>
+
+    <div class="item-placeholder" ng-hide="filteredItems.length">
+      Nothing here yet. Enter something above...
+    </div>
+
+  </body>
+</html>
