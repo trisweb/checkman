@@ -1,3 +1,5 @@
+var FIREBASE_URL = "https://checkman.firebaseio.com/culture_test"
+
 var checkMan = angular.module("checkMan", ["firebase", "ngCookies"]);
 
 checkMan.filter('object2Array', function() {
@@ -30,7 +32,7 @@ checkMan.controller('ItemController', function($scope, $firebase, $firebaseArray
   var clientId = localStorage.getItem("clientId");
   console.log("Your anonymous client ID is: "+clientId);
 
-  var itemRef = new Firebase("https://glaring-fire-4509.firebaseio.com/culture1");
+  var itemRef = new Firebase(FIREBASE_URL);
   // Automatically syncs everywhere in realtime
   $scope.items = $firebaseArray(itemRef);
 
@@ -80,7 +82,7 @@ checkMan.controller('ItemController', function($scope, $firebase, $firebaseArray
       }
       item.votes.push(clientId);
     }
-    $scope.items.$save();
+    $scope.items.$save(item);
   }
 
   $scope.unvote = function(item) {
@@ -93,7 +95,7 @@ checkMan.controller('ItemController', function($scope, $firebase, $firebaseArray
       if (i > -1) {
         item.votes.splice(i, 1);
       }
-      $scope.items.$save();
+      $scope.items.$save(item);
     }
   }
 
