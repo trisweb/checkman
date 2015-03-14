@@ -1,0 +1,14 @@
+<header>
+  <div class="actions">
+    <a href="" ng-href="#/settings" class="ss-icon">gear</a>
+  </div>
+  <h1>
+    <input ng-model="settings.title"
+      ng-model-options="{updateOn: 'default blur', debounce: {'default': 250, 'blur': 0}}">
+  </h1>
+</header>
+
+<section class="projects" ng-controller="ProjectsController">
+  <project ng-repeat="project in projects"></project>
+  <a href="" class="ss-icon add" ng-click="addProject()">plus</a>
+</section>
