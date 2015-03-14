@@ -5,21 +5,28 @@ checkman.directive('project',
   [       '$firebaseObject',
   function($firebaseObject) {
     return {
-      restrict: 'EA',
+      restrict: 'E',
       scope: {
-        id: '@'
+        projectId: '=' // Converted to $scope.project below
       },
       link: function($scope, $element, $attrs) {
-        // TODO: Get the actual ID! And assign it/use it to access from the parent.
-        $scope.id = '1';
+        console.log("Loading project... ", $scope.projectRef);
+        $scope.project = $firebaseObject(FIRE.child('projects').child($scope.projectId)); // TODO: Watch for changes
 
-        console.log("Loading project "+$scope.id+"...");
-        // Grab the project and bind to Firebase
-        $scope.project = $firebaseObject(FIRE.child('projects').child($scope.id));
-        // The $loaded() promise signifies that the initial state has been downloaded
         $scope.project.$loaded().then(function() {
           // Loaded.
+          console.log("Project loaded:", $scope.project);
         });
+
+        $scope.remove = function() {
+          if (confirm("Are you sure you want to remove this project?")) {
+            $scope.project.$remove().then(function(ref) {
+              console.log("Removed ", ref);
+            }, function(error) {
+              console.log(error);
+            });
+          };
+        };
 
       },
       templateUrl: 'js/templates/project.html'

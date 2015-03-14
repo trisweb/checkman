@@ -1,5 +1,6 @@
 <header>
   <div class="actions">
+    <a href="" class="ss-icon add" ng-click="addProject()">plus</a>
     <a href="" ng-href="#/settings" class="ss-icon">gear</a>
   </div>
   <h1>
@@ -8,7 +9,6 @@
   </h1>
 </header>
 
-<section class="projects" ng-controller="ProjectsController">
-  <project ng-repeat="project in projects"></project>
-  <a href="" class="ss-icon add" ng-click="addProject()">plus</a>
+<section class="projects">
+  <project ng-repeat="project in projects" project-id="project.$id"></project>
 </section>

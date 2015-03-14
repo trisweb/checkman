@@ -20,7 +20,7 @@ header {
     margin: 0;
   }
   input {
-    width: calc(100% - 60px);
+    width: calc(100% - 100px);
     border: none;
     border-bottom: 1px solid $gray;
     padding: 0 0 0.1em 0;
@@ -28,13 +28,14 @@ header {
   .actions {
     float: right;
     font-size: 2rem;
+    a + a { margin-left: 0.5rem; }
   }
 }
 
 .animated-view {
   &.ng-enter {
-    animation: 0.25s slideIn ease-in-out;
-    -webkit-animation: 0.25s slideIn ease-in-out;
+    animation: 0.35s slideIn ease-in-out;
+    -webkit-animation: 0.35s slideIn ease-in-out;
   }
 }
 
@@ -50,25 +51,75 @@ h1,h2,h3,h4 {
   }
 }
 
+a {
+  text-decoration: none;
+  color: $purple;
+  transition: all 0.2s ease-out;
+}
+a:hover {
+  color: $blue;
+}
+
+section.projects {
+  // Amazeballs
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
 project {
-  float: left;
+  flex: 1;
+
+  position: relative;
   margin-right: $page-padding;
+  margin-bottom: $page-padding;
   width: 20%;
   min-width: 15rem;
 
   background-color: $blue;
-  padding: 1rem;
+  padding: 0.75rem 1rem;
   color: white;
   border-radius: 0.25rem;
+
+  a {
+    color: white;
+  }
+  a:hover {
+    color: $darkblue;
+  }
 
   h2 {
     margin-top: 0;
     font-weight: 100;
+    padding-right: 1rem;
   }
   h3 {
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: 0.8rem;
     letter-spacing: 0.01rem;
+    font-weight: bold;
+  }
+
+  ul {
+    padding-left: 0.25rem;
+    margin-top: 0;
+    li {
+      list-style-type: none;
+    }
+  }
+  .project-header {
+    .remove {
+      opacity: 0;
+      position: absolute;
+      top: 1.1rem;
+      right: 1rem;
+    }
+  }
+  &:hover {
+    .project-header .remove {
+      opacity: 1;
+    }
   }
 }
 
@@ -85,12 +136,4 @@ input:focus {
   outline: none;
   border-color: #009CFF;
   background-color: rgba(255,255,255,0.8);
-}
-
-a {
-  text-decoration: none;
-  color: $purple;
-}
-a:hover {
-  color: $blue;
 }
