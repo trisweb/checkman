@@ -28,6 +28,14 @@ checkman.directive('project',
           };
         };
 
+        $scope.rename = function() {
+          var newName = prompt("Update the project's name:", $scope.project.name);
+          if (newName != $scope.project.name) {
+            $scope.project.name = newName;
+            $scope.project.$save();
+          }
+        }
+
       },
       templateUrl: 'js/templates/project.html'
     }

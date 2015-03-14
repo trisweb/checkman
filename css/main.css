@@ -78,7 +78,8 @@ project {
     font-weight: bold; }
   project ul {
     padding-left: 0.25rem;
-    margin-top: 0; }
+    margin-top: 0;
+    line-height: 1.5rem; }
     project ul li {
       list-style-type: none; }
   project .project-header .remove {
