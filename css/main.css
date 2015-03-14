@@ -1,4 +1,12 @@
 @charset "UTF-8";
+@-webkit-keyframes slideIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-0.5rem);
+    transform: translateY(-0.5rem); }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0); } }
 body {
   font-family: 'Proxima Nova', 'Open Sans', 'Lucida Grande', Helvetica, Arial, sans-serif;
   font-weight: 200;
@@ -12,20 +20,33 @@ header, section {
 header h1 {
   margin: 0; }
 header input {
-  width: 50%;
+  width: calc(100% - 60px);
   border: none;
   border-bottom: 1px solid #CCCCCC;
   padding: 0 0 0.1em 0; }
 header .actions {
   float: right;
   font-size: 2rem; }
+.animated-view.ng-enter {
+  animation: 0.25s slideIn ease-in-out;
+  -webkit-animation: 0.25s slideIn ease-in-out; }
+h1 {
+  font-size: 2.25rem; }
+h1, h2, h3, h4 {
+  font-weight: normal; }
+  h1 .ss-icon, h2 .ss-icon, h3 .ss-icon, h4 .ss-icon {
+    font-size: 75%;
+    vertical-align: middle;
+    margin-right: 0.1em; }
 project {
   float: left;
   margin-right: 1.5rem;
+  width: 20%;
   min-width: 15rem;
-  background-color: #009CFF;
+  background-color: #00BCF4;
   padding: 1rem;
-  color: white; }
+  color: white;
+  border-radius: 0.25rem; }
   project h2 {
     margin-top: 0;
     font-weight: 100; }
@@ -45,9 +66,10 @@ input:focus {
   border-color: #009CFF;
   background-color: rgba(255, 255, 255, 0.8); }
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: #FF44CB; }
 a:hover {
-  color: #009CFF; }
+  color: #00BCF4; }
 /*
 * Symbolset
 * www.symbolset.com

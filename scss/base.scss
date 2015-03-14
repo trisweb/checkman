@@ -20,7 +20,7 @@ header {
     margin: 0;
   }
   input {
-    width: 50%;
+    width: calc(100% - 60px);
     border: none;
     border-bottom: 1px solid $gray;
     padding: 0 0 0.1em 0;
@@ -31,21 +31,42 @@ header {
   }
 }
 
+.animated-view {
+  &.ng-enter {
+    animation: 0.25s slideIn ease-in-out;
+    -webkit-animation: 0.25s slideIn ease-in-out;
+  }
+}
+
+h1 {
+  font-size: 2.25rem;
+}
+h1,h2,h3,h4 {
+  font-weight: normal;
+  .ss-icon {
+    font-size: 75%;
+    vertical-align: middle;
+    margin-right: 0.1em;
+  }
+}
+
 project {
   float: left;
   margin-right: $page-padding;
+  width: 20%;
   min-width: 15rem;
 
   background-color: $blue;
   padding: 1rem;
   color: white;
+  border-radius: 0.25rem;
 
-  h2 { 
-    margin-top: 0; 
-    font-weight: 100; 
+  h2 {
+    margin-top: 0;
+    font-weight: 100;
   }
-  h3 { 
-    text-transform: uppercase; 
+  h3 {
+    text-transform: uppercase;
     font-size: 1rem;
     letter-spacing: 0.01rem;
   }
@@ -68,6 +89,7 @@ input:focus {
 
 a {
   text-decoration: none;
+  color: $purple;
 }
 a:hover {
   color: $blue;

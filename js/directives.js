@@ -1,12 +1,31 @@
-checkman.directive('project', [function() {
-  return {
-    restrict: 'EA',
-    link: function(scope, element, attrs) {
 
-    },
-    templateUrl: 'js/templates/project.html'
+// Main project directive
+// Should be bound to the firebase root /projects/[id]
+checkman.directive('project',
+  [       '$firebaseObject',
+  function($firebaseObject) {
+    return {
+      restrict: 'EA',
+      scope: {
+        id: '@'
+      },
+      link: function($scope, $element, $attrs) {
+        // TODO: Get the actual ID! And assign it/use it to access from the parent.
+        $scope.id = '1';
+
+        console.log("Loading project "+$scope.id+"...");
+        // Grab the project and bind to Firebase
+        $scope.project = $firebaseObject(FIRE.child('projects').child($scope.id));
+        // The $loaded() promise signifies that the initial state has been downloaded
+        $scope.project.$loaded().then(function() {
+          // Loaded.
+        });
+
+      },
+      templateUrl: 'js/templates/project.html'
+    }
   }
-}]);
+]);
 
 
 // From https://docs.angularjs.org/api/ng/type/ngModel.NgModelController

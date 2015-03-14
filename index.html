@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="checkman">
   <head>
-    <title>Localytics - Culture Survey</title>
+    <title>Checkman</title>
 
     <link href="css/main.css" rel="stylesheet" type="text/css">
     <script src="js/vendor.js"></script>
@@ -14,15 +14,6 @@
   </head>
 
   <body ng-controller="MainController">
-    <header>
-      <div class="actions">
-        <a href="" class="ss-icon">gear</a>
-      </div>
-      <h1><input ng-model="listTitle"></h1>
-    </header>
-
-    <section class="projects" ng-controller="ItemController">
-      <project ng-repeat="project in projects"></project>
-    </section>
+    <div class="animated-view" ng-view></div>
   </body>
 </html>

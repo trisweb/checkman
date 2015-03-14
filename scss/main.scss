@@ -3,7 +3,9 @@
 $font: 'Proxima Nova', 'Open Sans', 'Lucida Grande', Helvetica, Arial, sans-serif;
 
 $gray: #CCCCCC;
-$blue: #009CFF;
+$blue: #00BCF4;
+$purple: #FF44CB;
 
+@import 'utils';
 @import 'base';
 @import 'ss-standard';
