@@ -22,7 +22,6 @@ header {
   input {
     width: calc(100% - 100px);
     border: none;
-    border-bottom: 1px solid $gray;
     padding: 0 0 0.1em 0;
   }
   .actions {
@@ -53,7 +52,7 @@ h1,h2,h3,h4 {
 
 a {
   text-decoration: none;
-  color: $purple;
+  color: $gray;
   transition: all 0.2s ease-out;
 }
 a:hover {
@@ -82,6 +81,10 @@ project {
   color: white;
   border-radius: 0.25rem;
 
+  box-shadow: 0 1rem 1.7rem -1rem rgba(0,0,0,0.25);
+
+  transition: all 0.2s ease-out;
+
   a {
     color: white;
   }
@@ -90,6 +93,7 @@ project {
   }
 
   h2 {
+    font-size: 1.75rem;
     margin-top: 0;
     font-weight: 100;
     padding-right: 1rem;
@@ -99,11 +103,13 @@ project {
     font-size: 0.8rem;
     letter-spacing: 0.01rem;
     font-weight: bold;
+    margin-bottom: 0.25rem;
   }
 
   ul {
-    padding-left: 0.25rem;
+    padding-left: 0.15rem;
     margin-top: 0;
+    padding-top: 0;
     line-height: 1.5rem;
     li {
       list-style-type: none;
@@ -118,6 +124,7 @@ project {
     }
   }
   &:hover {
+    box-shadow: 0 1rem 2rem -0.9rem rgba(0,0,0,0.32);
     .project-header .remove {
       opacity: 1;
     }
@@ -127,7 +134,6 @@ project {
 // Basic Styles
 input {
   transition: all 0.1s ease-out;
-  border: 1px solid #ccc;
   padding: 5px 10px;
   background-color: rgba(255,255,255,0.5);
   font-size: 2rem;
@@ -137,4 +143,19 @@ input:focus {
   outline: none;
   border-color: #009CFF;
   background-color: rgba(255,255,255,0.8);
+}
+
+input[type=checkbox] {
+  transition: all 0.2s ease-out;
+  box-shadow: 0 2px 2px -1px rgba(0,0,0,0.3);
+  & + span {
+    opacity: 1;
+    transition: all 0.5s ease-out;
+  }
+}
+input[type=checkbox]:checked {
+  box-shadow: 0 0 6px -1px rgba(255,255,255,1);
+  & + span {
+    opacity: 0.6;
+  }
 }

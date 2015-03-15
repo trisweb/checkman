@@ -10,6 +10,7 @@ Ideas/ToDos
 -----------
 
 - Templates (request what template to use on add, edit templates in settings)
+- Adding/removing sections and items (from template or active project)
 - Colors for each card
 - Display modes (user pref, local storage) that control how dense the display is -- to cover different use cases and problems.
   - high-level overview (progress bar only per project)

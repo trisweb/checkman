@@ -1,26 +1,23 @@
-<article class="project">
+<article>
 	<div class="project-header">
 		<a href="" class="remove ss-icon" ng-click="remove()">close</a>
 		<h2 ng-click="rename()">{{project.name}}</h2>
 	</div>
 	<div class="project-content">
-		<div class="project-stage">
-			<h3>Discovery</h3>
-			<ul class="project-steps">
-				<li><label><input type="checkbox">User interviews</label></li>
-				<li><label><input type="checkbox">Competitive eval</label></li>
-				<li><label><input type="checkbox">Feedback hunting</label></li>
+		<div class="project-stage" ng-repeat="stage in project.stages">
+			<h3>{{stage.name}}</h3>
+			<ul class="project-tasks">
+				<li ng-repeat="task in stage.tasks">
+					<label>
+						<input type="checkbox"
+							ng-model="task.complete"
+							ng-change="taskChanged()"><span>{{task.name}}</span></label>
+				</li>
+				<li><a href="" ng-click="addTask(stage)"><i class="ss-icon">plus</i> Add Task</a></li>
 			</ul>
 		</div>
 
-		<div class="project-stage">
-			<h3>Ideation</h3>
-			<ul class="project-steps">
-				<li><label><input type="checkbox">Kickoff session</label></li>
-				<li><label><input type="checkbox">Divergent sketches</label></li>
-				<li><label><input type="checkbox">UX team review</label></li>
-				<li><label><input type="checkbox">Product team review</label></li>
-			</ul>
-		</div>
+		<a href="" ng-click="addStage()"><i class="ss-icon">plus</i> Add Stage</a>
 	</div>
+
 </article>
